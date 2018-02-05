@@ -1,0 +1,263 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Automaty i języki Formalne</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-brown.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Armata|Encode+Sans|Josefin+Sans|Lato" rel="stylesheet">
+
+
+</head>
+
+<body>
+    <div class="w3-container w3-teal w3-theme-d1">
+        <h1>Automaty i języki formalne</h1>
+    </div>
+    <div class="w3-container w3-teal w3-theme-l4">
+        <h2>Test z wyrażeń regularnych</h2>
+        <table class="w3-table-all w3-striped w3-centered w3-card-4">
+            <tr>
+                <th>wyrażenie</th>
+                <th>opis wyrażenia</th>
+            </tr>
+            <tr>
+                <td><b>*</b></td>
+                <td>0, lub więcej wystąpień</td>
+            </tr>
+            <tr>
+                <td><b>+</b></td>
+                <td>1, lub więcej wystąpień</td>
+            </tr>
+            <tr>
+                <td><b>?</b></td>
+                <td>1, lub więcej wystąpień</td>
+            </tr>
+            <tr>
+                <td><b>{m}</b></td>
+                <td>dokładnie <i>m</i> wystąpień</td>
+            </tr>
+            <tr>
+                <td><b>{n,}</b></td>
+                <td>co najmniej <i>n</i> wystąpień</td>
+            </tr>
+            <tr>
+                <td><b>{n, m}</b></td>
+                <td> od <i>n</i> do <i>m</i> wystąpień</td>
+            </tr>
+            <tr>
+                <td><b>|</b></td>
+                <td>alternatywa</td>
+            </tr>
+            <tr>
+                <td><b>[...]</b></td>
+                <td>1 znak spośród zbioru znaków</td>
+            </tr>
+            <tr>
+                <td><b>[^...]</b></td>
+                <td>jeden znak spoza zbioru znaków</td>
+            </tr>
+            <tr>
+                <td><b>.</b></td>
+                <td>dowolny znak</td>
+            </tr>
+            <tr>
+                <td><b>\</b></td>
+                <td>unieważnienie znaków specjalnych</td>
+            </tr>
+            <tr>
+                <td><b>^ $</b></td>
+                <td>zakotwiczenie</td>
+            </tr>
+            <tr>
+                <td><b>\p{L}, \p{Ll} i \p{Lu}.</b></td>
+                <td>dowolna litera z języka, litera mająca swój "mały odpowiednik", mająca swój "wielki" odpowiednik</td>
+            </tr>
+        </table>
+
+    </div>
+    <div class="w3-container w3-teal w3-theme-l5">
+        <h1>Materiał z wykładu</h1>
+        <h2>1.1 Języki formalne, pojęcia podstawowe</h2>
+        <p><b>Alfabet (vocabulary)</b> - dowolny, skończony, niepusty zbiór symboli</p>
+        <p><b>Alfabet</b> - zbiór obiektów materialnych w języku matematyki. Mówimy o reprezentacji obiektów materialnych np. 5 - znak reprezentujący liczbę 5.</p>
+        <p>Przedmiotem zainteresowania automatów jest znak, który może być powielony w kilku miejscach</p>
+        <p class="w3-card-4 w3-padding-16 w3-center"><b>Definicja:</b><br>
+            <b>Słowem</b> nad alfabetem <i><b>V</b></i> nazywamy dowolny skończony ciąg symboli z <i><b>V</b></i> (jest ono obiektem materialnym).
+        </p>
+        <p>Najkrótsze słowo: ciąg pusty &epsilon;</p>
+        <p><b>a &#8712; V</b> jest przykładem najkrótszego 1-elementowego ciągu</p>
+        <p>Wszystkie słowa nad alfabetem <i><b>V</b></i> oznaczamy <i><b>V <sup>*</sup></b>
+        </i></p>
+        <p><i><b>V <sup>*</sup>\{&epsilon;} = V <sup>+</sup></b></i> - zbiór wszystkich niepustych słów nad alfabetem <i><b>V</b></i>.</p>
+        <h3>Przykłady</h3>
+        <ul class="w3-ul w3-card-4 w3-border">
+            <li><b><i>V={a}</i></b> - &epsilon;, a, aa, aaa ...</li>
+            <li><b><i>a <sup>4</sup> = aaaa</i></b> - słowo złożone z 4 a</li>
+            <li><i><b>V = {0, 1}</b></i> - wszystkie ciągi binarne są zbiorem nad alfabetem <i><b>V</b></i></li>
+            <li><b><i>V = {0, 1, ... , 9}</i></b> - słowa będące liczbą (ciąg cyfr)</li>
+            <li> <b><i>V = {a, ą, b, c, ć, ... ,ź}</i></b> - każdy ciąg składający się z tych znakó jest słowem, np. miasto, abżubr.</li>
+        </ul>
+        <p><b>Celem gramatyki jest wskazywanie, które słowa nad zadanym alfabetem są uważane za poprawnie zbudowane</b></p>
+        <p class="w3-card-4 w3-padding-16 w3-center"><b>Definicja:</b><br>
+            <b>Językiem nad alfabetem <i>V</i></b> nazywamy dowolny podzbiór <b><i>L</i></b> zbioru <b><i>V <sup>*</sup></i></b></p>
+        <h4>L &#8712; V <sup>*</sup></h4>
+        <p><b>Przykład:</b><br> Językiem nad alfabetem binarnym będzie zbiór tych wszystkich ciągów, które mają długość mniejszą od 3<br>
+            <b>{&epsilon;, 0, 1, 00, 01, 10, 11}</b>
+        </p>
+        <table class="w3-table w3-card-4">
+            <tr>
+                <th>Po polsku</th>
+                <th>Po angielsku</th>
+            </tr>
+            <tr>
+                <th>V - alfabet</th>
+                <td>vocabulary</td>
+            </tr>
+            <tr>
+                <th>ciąg nad V - słowo</th>
+                <td>word</td>
+            </tr>
+            <tr>
+                <th>zbiór słów - język</th>
+                <td>language</td>
+            </tr>
+        </table>
+        <p><b>Słowotwórstwo</b> - zasady prawidłowego tworzenia słów z alfabetem</p>
+        <p><b>Gramatyka</b> - mówi jak budować zdania w oparciu o słowa.</p>
+        <p><i>Powyższe twierdzenia dotyczą j.polskiego.</i></p>
+        <p>Słowa będziemy oznaczać: <b>P, Q, R, X, Y, Z</b></p>
+        <h3>1.2 Konkatenacja słów</h3>
+        <div class="w3-card-4 w3-padding-16">
+            <center><b>Definicja:</b><br> Dla dowolnych słów &#8712; <b>P, Q V<sup>*</sup></b> konkatenacja <b>P</b> i <b>Q</b> jest słowem oznaczonym przez <b>PQ</b> i obliczanym w następujący sposób:</center>
+            <ol>
+                <li><b>P = a<sub>1</sub>, ..., a<sub>n</sub></b>, n >= 1<br>
+                    <b>Q = b<sub>1</sub>, ..., b<sub>n</sub></b>, m >= 1<br>
+                    <b>PQ = a<sub>1</sub>, ..., a<sub>n</sub>b<sub>1</sub>, ..., b<sub>n</sub></b></li>
+                <li>jeśli <b>P = &epsilon;</b>, to <b>PQ = Q</b></li>
+                <li><b>&epsilon;&epsilon; = &epsilon;</b></li>
+            </ol>
+        </div>
+        <p>
+            <center>Konkatenacja jest działaniem <b>łącznym:</b><br>
+                <b>(PQ)R = P(QR)</b></center>
+        </p>
+        <p>Ciąg pusty <b>&epsilon;</b> jest elementem neutralnym konkatenacji.</p>
+        <p>Konkatenacja nie tworzy <b>grupy</b>, ponieważ nie posiada elementó odwrotnych, ale jest <b>półgrupą z jedynką.</b>. <b>Przemienność</b> zachodzi tylko dla alfabetu złożonego z jednego znaku</p>
+        <p>
+            <center><b>P = Q <sub>1</sub>QQ <sub>2</sub></b><br> Q <sub>1</sub> - <b>prefix P </b><br>Q - <b>infix P</b><br> Q <sub>2</sub> - <b>sufix P</b></center>
+        </p>
+        <p><b>&epsilon;</b> jest zawsze prefixem, infiksem i sufiksem w każdym słowie.</p>
+        <p><b><i>Q</i></b> jest <b>podsłowem</b> słowa <b>P</b>, wtedy i tylko wtedy, gdy <b>P = Q <sub>1</sub>QQ <sub>2</sub></b> dla pewnych <b>Q <sub>1</sub> Q <sub>2</sub></b></p>
+        <p class="w3-card-4 w3-padding-16 w3-center"><b>Definicja (długość słowa):</b><br> Długością słowa <b>P &#8712; V <sup>*</sup></b> nazywamy liczbę naturalną <b>|p|</b> zdefiniowaną indukcyjnie w następujący sposób:</p>
+        <ol>
+            <li>|&epsilon;| = 0</li>
+            <li>|Pa| = |P| + 1</li>
+        </ol>
+        <p><b>Długość słowa</b> to liczba wystąpień symboli, które w nim są.</p>
+        <p><b>Własność:</b><br>
+        |PQ| = |P| + |Q|
+        </p>
+        <p><b>Dowód (indukcja po |Q|):</b><br></p>
+        <ol>
+            <li>|Q| = 0 (Q = &epsilon;)</li>
+            <li><i>L</i> = |PQ| = |P&epsilon;| = |P| = |P| + 0 = |P| + &epsilon; = |P| + |Q| = <i>P</i></li>
+            <li>Załóżmy, że |PQ| = |P| + |Q|, |Q|<= n<br>
+            <i>L</i> = |P(Qa)| = |(PQ)a| = |PQ| +1 = (|P| + |Q|) + 1 = |P| + (|Q| + 1) = |P| + |Qa| = <i>P</i>
+            </li>
+        </ol>
+        <p class="w3-card-4 w3-padding-16 w3-center"><b>Definicja (potęga słowa nad P &#8712; V <sup>*</sup>):</b><br>
+        niech <b>P &#8712; V <sup>*</sup></b>, n>= 0 , n-tą potęgą słowa <b>P</b> nazywamy słowo P <sup>n</sup> zdefiniowane indukcyjnie w najstępujący sposób: </p>
+        <ol>
+            <li> P <sup>0</sup> = &epsilon;</li>
+            <li>P <sup>n + 1</sup> = P <sup>n</sup>P</li>
+        </ol>
+        <p class="w3-card-4 w3-padding-16 w3-center"><b>Definicja (odbicie zwierciadlane słowa P):</b><br>
+        Niech <b>P &#8712; V <sup>*</sup></b>, odbiciem zwierciadlanym (rewersem) słowa P nazywamy słowo oznaczone przez <b>P<sup>-1</sup></b> definiowane indukcyjnie w następujący sposób:
+        </p>
+        <ol>
+            <li>&epsilon;<sup>-1</sup> = &epsilon;</li>
+            <li>(Pa)<sup>-1</sup> = aP<sup>-1</sup></li>
+        </ol>
+        <p><b>Przykład:</b><br>
+        (abc) <sup>-1</sup> = c(ab)<sup>-1</sup> = cb(&epsilon;a)<sup>-1</sup> = cba&epsilon; = cba
+        </p>
+        <p><b>Własności:</b></p>
+        <ol>
+            <li>(PQ)<sup>-1</sup> = Q<sup>-1</sup>P<sup>-1</sup></li>
+            <li>(P<sup>n</sup>)<sup>-1</sup> = (P<sup>-1</sup>)<sup>n</sup></li>
+            <li>(P<sup>-1</sup>)<sup>-1</sup> = P</li>
+        </ol>
+        <p><b> Jeśli P = P<sup>-1</sup></b> to słowo jest palindromem.</p>
+        <h2>Sposoby definiowania języków</h2>
+        <ol>
+            <li>Wymienienie elementów języka: <br>
+            L = {a, ab, bab} o ile L jest skończony
+            L<sub>1</sub> = {a<sup>n</sup>b<sup>m</sup>, m, n >= 1} - L nieskończony
+            </li>
+            <li>Podanie pewnej własności strukturalnej wspólnej dla cech danego języka<br>
+            L<sub>2</sub> = {a<sup>n</sup>b<sup>n</sup> n>= 1} <br>
+            L<sub>3</sub> = {P &#8712; {a, b}* : #<sub>a</sub>P = #<sub>b</sub>P } #<sub>a</sub>P - liczba wystąpień <i>a</i> w słowie <i>P</i><br>
+            </li>
+            <li>Definicja indukcjna</li>
+            <li>Podanie metody wyprowadzenia "słowa" (gramatyki) <br>
+            <b>Reguła przepisywania:</b> <br>
+            S -> AB <br>
+            A -> CD <br>
+            B -> AB <br>
+            <br>
+            S -> AB -> CDB -> CDAB -> CDAAB <br>
+            <br>
+            L<sub>2</sub> = {a<sup>n</sup>b<sup>n</sup> n>= 1} <br>
+            S -> ab <br>
+            S -> aSb <br>
+            </li>
+        </ol>
+        <h3>2.1 Deterministyczne automaty skończenie stanowe</h3>
+        <b>q</b> - głowica <br>
+        <b>T</b> - skończony alfabet <br>
+        <b>K</b> - zbiór stanów (skończony) <br>
+        <b>&delta;</b> - faza przejścia automatu <br>
+        <b>q<sub>0</sub> &#8712; K</b> - stan początkowy <br>
+        <b>H &#8712; K</b> - zbiór stanów akceptujących (kończących) <br>
+        <p class="w3-card-4 w3-padding-16 w3-center"><b>Definicja:</b>
+        <b>Deterministycznym automatem skończenie stnowym</b> nazywamy uporządkowaną piątkę A = &#8826;K, T, &delta;, q<sub>0</sub>, H>, gdzie: <br>
+        <b>T</b> - skończony, niepusty alfabet taśmy (alfabet wejścia) <br>
+        <b>K</b> - skończony, niepusty zbiór stanów <br>
+        <b>&delta;</b> - faza przejścia automatu <br>
+        <b>q<sub>0</sub> &#8712; K</b> - stan początkowy <br>
+        <b>H &#8712; K</b> - zbiór stanów końcowych (akceptujących) <br>
+        <b>&delta; K x T -> K</b>
+        </p>
+        <p class="w3-card-4 w3-padding-16 w3-center"><b>Definicja:</b><br>
+        <b>Rozszerzoną funkcją przejścia deterministycznego automatu skończenie stanowego</b> A = &#8826;K, T, &delta;, q<sub>0</sub>, H> nazywamy funkcję &delta; <sup>^</sup> : K x T<sup>*</sup> zdefiniowaną indukcyjnie w następujący sposób:
+        </p>
+        <ol>
+            <li>&delta;<sup>^</sup>(q, &epsilon;) = q</li>
+            <li>&delta;<sup>^</sup>(q, Pa) = &delta;(&delta;<sup>^</sup>(q, P), a)</li>
+        </ol>
+        <p> L(A) = { P &#8712; T<sup>*</sup>: &delta;<sup>^</sup>(q<sub>0</sub>, P) &#8712; H }</p>
+        <p><b>Twierdzenie:</b><br>
+        &delta;<sup>^</sup>(q, PQ) = &delta;<sup>^</sup>(&delta;<sup>^</sup>(q, P), Q)
+        </p>
+        <h2>3.1 Niedeterministyczne automaty skończenie stanowe</h2>
+        <p class="w3-card-4 w3-padding-16 w3-center"><b>Definicja:</b>
+        <b>Niedeterministycznym automatem skończenie stnowym</b> nazywamy uporządkowaną piątkę A = &#8826;K, T, &delta;, q<sub>0</sub>, H>, gdzie: <br>
+        <b>T</b> - skończony, niepusty alfabet taśmy (alfabet wejścia) <br>
+        <b>K</b> - skończony, niepusty zbiór stanów <br>
+        <b>&delta;</b> - faza przejścia automatu <br>
+        <b>Q<sub>0</sub> &#8712; K</b> - zbiór stanów początkowych <br>
+        <b>H &#8712; K</b> - zbiór stanów końcowych (akceptujących) <br>
+        <b>&delta; K x T -> P(K)</b>
+        </p>
+    </div>
+    <footer class="w3-container w3-theme-d3">
+        Page created by: Szumimajster with using <a href="https://www.w3schools.com/w3css/">w3.css</a>
+    </footer>
+</body>
+
+</html>
